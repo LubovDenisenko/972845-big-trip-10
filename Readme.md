@@ -1,7 +1,7 @@
 # Личный проект «Большое путешествие» [![Build status][travis-image]][travis-url]
 
 * Студент: [Любовь Денисенко](https://up.htmlacademy.ru/ecmascript/10/user/972845).
-* Наставник: `Вадим Вильданов`.
+* Наставник: `Вадим Вильданов`(https://htmlacademy.ru/profile/id1210315),
 
 ---
 
