@@ -38,7 +38,7 @@ const createInfoTemplate = () => {
 
             <p class="trip-info__dates">Mar 18&nbsp;&mdash;&nbsp;21</p>
         </div>`
-    );
+  );
 };
 
 const createRouteHeaderTemplate = () => {
