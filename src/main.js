@@ -1,16 +1,16 @@
-`use strict`;
+"use strict";
 const createSiteMenuTemplate = () => {
-    return (
-        `<nav class="trip-controls__trip-tabs  trip-tabs">
+  return (
+    `<nav class="trip-controls__trip-tabs  trip-tabs">
               <a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
               <a class="trip-tabs__btn" href="#">Stats</a>
             </nav>`
-    );
+  );
 };
 
 const createFilterTemplate = () => {
-    return (
-        `<form class="trip-filters" action="#" method="get">
+  return (
+    `<form class="trip-filters" action="#" method="get">
               <div class="trip-filters__filter">
                 <input id="filter-everything" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="everything" checked>
                 <label class="trip-filters__filter-label" for="filter-everything">Everything</label>
@@ -28,12 +28,12 @@ const createFilterTemplate = () => {
 
               <button class="visually-hidden" type="submit">Accept filter</button>
             </form>`
-    );
+  );
 };
 
 const createInfoTemplate = () => {
-    return (
-        `<div class="trip-info__main">
+  return (
+    `<div class="trip-info__main">
             <h1 class="trip-info__title">Amsterdam &mdash; ... &mdash; Amsterdam</h1>
 
             <p class="trip-info__dates">Mar 18&nbsp;&mdash;&nbsp;21</p>
@@ -42,8 +42,8 @@ const createInfoTemplate = () => {
 };
 
 const createRouteHeaderTemplate = () => {
-    return (
-        `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
+  return (
+    `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
     <span class="trip-sort__item  trip-sort__item--day"></span>
 
     <div class="trip-sort__item  trip-sort__item--event">
@@ -75,12 +75,12 @@ const createRouteHeaderTemplate = () => {
       </ul>
     </li>
    </ul>`
-    );
+  );
 };
 
 const createCardTemplate = () => {
-    return (
-        ` <li class="trip-events__item">
+  return (
+    ` <li class="trip-events__item">
                   <div class="event">
                     <div class="event__type">
                       <img class="event__type-icon" width="42" height="42" src="img/icons/taxi.png" alt="Event type icon">
@@ -114,12 +114,12 @@ const createCardTemplate = () => {
                     </button>
                   </div>
           </li>`
-    );
+  );
 };
 
 const createAddAndEditFormTemplate = () => {
-    return (
-        `<li class="trip-events__item">
+  return (
+    `<li class="trip-events__item">
     <form class="trip-events__item  event  event--edit" action="#" method="post">
     <header class="event__header">
       <div class="event__type-wrapper">
@@ -228,11 +228,11 @@ const createAddAndEditFormTemplate = () => {
     </header>
   </form>
   </li> `
-    );
+  );
 };
 
 const render = (container, template, place) => {
-    container.insertAdjacentHTML(place, template);
+  container.insertAdjacentHTML(place, template);
 };
 
 const siteMainElement = document.querySelector(`.trip-main`);
@@ -248,6 +248,6 @@ render(tripEvents, createRouteHeaderTemplate(), `afterbegin`);
 
 const formTemplate = document.querySelector(`.trip-events__list`);
 for (let i = 0; i < 3; i++) {
-    render(formTemplate, createCardTemplate(), `afterbegin`);
-};
+  render(formTemplate, createCardTemplate(), `afterbegin`);
+}
 render(formTemplate, createAddAndEditFormTemplate(), `afterbegin`);
