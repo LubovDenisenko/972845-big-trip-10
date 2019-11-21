@@ -1,21 +1,16 @@
-let eventName = "Random event name";
-let eventTimeFrom = "00";
-let eventTimeTill = "00";
-let eventCost = "00";
-let eventOfferCost = "00";
-let eventDuration = "0H 0M";
+`use strict`;
 const createSiteMenuTemplate = () => {
-  return (
-      `<nav class="trip-controls__trip-tabs  trip-tabs">
+    return (
+        `<nav class="trip-controls__trip-tabs  trip-tabs">
               <a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
               <a class="trip-tabs__btn" href="#">Stats</a>
             </nav>`
-  )
+    );
 };
 
 const createFilterTemplate = () => {
-  return (
-      `<form class="trip-filters" action="#" method="get">
+    return (
+        `<form class="trip-filters" action="#" method="get">
               <div class="trip-filters__filter">
                 <input id="filter-everything" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="everything" checked>
                 <label class="trip-filters__filter-label" for="filter-everything">Everything</label>
@@ -33,21 +28,22 @@ const createFilterTemplate = () => {
 
               <button class="visually-hidden" type="submit">Accept filter</button>
             </form>`
-  )
+    );
 };
+
 const createInfoTemplate = () => {
-  return (
-      `<div class="trip-info__main">
-              <h1 class="trip-info__title">Amsterdam &mdash; ... &mdash; Amsterdam</h1>
+    return (
+        `<div class="trip-info__main">
+            <h1 class="trip-info__title">Amsterdam &mdash; ... &mdash; Amsterdam</h1>
 
-              <p class="trip-info__dates">Mar 18&nbsp;&mdash;&nbsp;21</p>
-            </div>`
-  )
+            <p class="trip-info__dates">Mar 18&nbsp;&mdash;&nbsp;21</p>
+        </div>`
+    );
 };
 
-const createEditFormTemplate = () => {
-  return (
-      `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
+const createRouteHeaderTemplate = () => {
+    return (
+        `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
     <span class="trip-sort__item  trip-sort__item--day"></span>
 
     <div class="trip-sort__item  trip-sort__item--event">
@@ -78,33 +74,30 @@ const createEditFormTemplate = () => {
 
       </ul>
     </li>
-   </ul>
-  `
-  )
-
+   </ul>`
+    );
 };
 
-const createItemTemplate = () => {
-  return (
-      `
-  <li class="trip-events__item">
+const createCardTemplate = () => {
+    return (
+        ` <li class="trip-events__item">
                   <div class="event">
                     <div class="event__type">
                       <img class="event__type-icon" width="42" height="42" src="img/icons/taxi.png" alt="Event type icon">
                     </div>
-                    <h3 class="event__title">${eventName}</h3>
+                    <h3 class="event__title">Random event name</h3>
 
                     <div class="event__schedule">
                       <p class="event__time">
-                        <time class="event__start-time" datetime="2019-03-18T10:30">${eventTimeFrom}</time>
+                        <time class="event__start-time" datetime="2019-03-18T10:30">00</time>
                         &mdash;
-                        <time class="event__end-time" datetime="2019-03-18T11:00">${eventTimeTill}</time>
+                        <time class="event__end-time" datetime="2019-03-18T11:00">00</time>
                       </p>
-                      <p class="event__duration">${eventDuration}</p>
+                      <p class="event__duration">0H 0M</p>
                     </div>
 
                     <p class="event__price">
-                      &euro;&nbsp;<span class="event__price-value">${eventCost}</span>
+                      &euro;&nbsp;<span class="event__price-value">00</span>
                     </p>
 
                     <h4 class="visually-hidden">Offers:</h4>
@@ -112,7 +105,7 @@ const createItemTemplate = () => {
                       <li class="event__offer">
                         <span class="event__offer-title">Order Uber</span>
                         &plus;
-                        &euro;&nbsp;<span class="event__offer-price">${eventOfferCost}</span>
+                        &euro;&nbsp;<span class="event__offer-price">00</span>
                        </li>
                     </ul>
 
@@ -120,15 +113,13 @@ const createItemTemplate = () => {
                       <span class="visually-hidden">Open event</span>
                     </button>
                   </div>
-                </li>
-                `
-  )
+          </li>`
+    );
 };
 
-const createEditForm = () => {
-  return (
-      `
-    <li class="trip-events__item">
+const createAddAndEditFormTemplate = () => {
+    return (
+        `<li class="trip-events__item">
     <form class="trip-events__item  event  event--edit" action="#" method="post">
     <header class="event__header">
       <div class="event__type-wrapper">
@@ -236,18 +227,16 @@ const createEditForm = () => {
       <button class="event__reset-btn" type="reset">Cancel</button>
     </header>
   </form>
-  </li>
-    `
-  )
+  </li> `
+    );
 };
 
 const render = (container, template, place) => {
-  container.insertAdjacentHTML(place, template);
+    container.insertAdjacentHTML(place, template);
 };
 
 const siteMainElement = document.querySelector(`.trip-main`);
 const tripMainInfo = siteMainElement.querySelector(`.trip-main__trip-info`);
-
 render(tripMainInfo, createInfoTemplate(), `afterbegin`);
 
 const tripControls = document.querySelector(`.trip-main__trip-controls`);
@@ -255,10 +244,10 @@ render(tripControls, createSiteMenuTemplate(), `afterbegin`);
 render(tripControls, createFilterTemplate(), `beforeend`);
 
 const tripEvents = document.querySelector(`.trip-events`);
-render(tripEvents, createEditFormTemplate(), `afterbegin`);
+render(tripEvents, createRouteHeaderTemplate(), `afterbegin`);
 
-const formTemplate = document.querySelector(`.trip-events__list`)
+const formTemplate = document.querySelector(`.trip-events__list`);
 for (let i = 0; i < 3; i++) {
-  render(formTemplate, createItemTemplate(), `afterbegin`);
-}
-render(formTemplate, createEditForm(), `afterbegin`);
+    render(formTemplate, createCardTemplate(), `afterbegin`);
+};
+render(formTemplate, createAddAndEditFormTemplate(), `afterbegin`);
