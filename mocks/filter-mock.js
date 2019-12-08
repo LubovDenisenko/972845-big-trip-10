@@ -1,5 +1,3 @@
-const generateFilters = () => {
-  return new Array( `past`, `future`, `all`)
+export const generateFilters = () => {
+  return new Array ( `past`, `future`, `all`)
 }
-
-export {generateFilters}

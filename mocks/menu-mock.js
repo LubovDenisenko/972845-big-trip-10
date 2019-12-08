@@ -1,3 +1,3 @@
 export const generateMenu = () => {
-  return new Array( `Table`, `Stats`)
+  return new Array ( `Table`, `Stats`)
 }

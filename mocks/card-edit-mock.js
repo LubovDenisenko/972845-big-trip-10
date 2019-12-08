@@ -2,6 +2,10 @@ const cityNames = [
   `Moscow`, `Paris`, `London`, `Tel-Aviv`, `Milan`, `Hamburg`, `New York`
 ];
 
+const activityNames = [
+  `Taxi`, `Bus`, `Train`, `Ship`, `Transport`, `Drive`, `Flight`, `Check`, `Sightseeing`, `Restaurant`
+]
+
 const description = [
   `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
   `Cras aliquet varius magna, non porta ligula feugiat eget.`,
@@ -20,7 +24,26 @@ const img = [
 ];
 
 const additionalOptions = [
-  `Add luggage +10 €`, `Switch to comfort class +150 €`, `Add meal +2 €`, `Choose seats +9 €`
+  {
+    id: `event-offer-luggage`,
+    name: `Add luggage`,
+    price: `+10 €`,
+  },
+  {
+    id: `event-offer-comfort`,
+    name: `Switch to comfort class`,
+    price:`+150 €`
+  },
+  {
+    id: `event-offer-meal`,
+    name: `Add meal`,
+    price: `+2 €`,
+  },
+  {
+    id: `event-offer-seats`,
+    name: `Choose seats`,
+    price: `+9 €`,
+  }
 ];
 
 
@@ -33,15 +56,35 @@ const getRandomIntegerNumber = (min, max) => {
   return min + Math.floor(max * Math.random());
 };
 
-const getRandomDate = () => {
-  const eventDate = new Date();
-  const sign = Math.random() > 0.5 ? 1 : -1;
-  const diffValue = sign * getRandomIntegerNumber(0,7);
-  eventDate.setDate(eventDate.getDate() + diffValue);
-  return eventDate
+const makeArrayOfOptions = (arr) => {
+
+const makeRandomArr = (arr) => {
+const rand = (a, b) => {
+  return Math.random() - 0.5;
 }
+return arr.sort(rand);
+}
+const newArrayOfOptions = makeRandomArr(arr)
+return newArrayOfOptions.slice(0, getRandomIntegerNumber(0, 3))
+}
+
+
+const getRandomDate = () => {
+  return getRandomIntegerNumber(1, 31) + '/0' + getRandomIntegerNumber(1, 9) + `/19 ` + getRandomIntegerNumber(1,12) + `:` + getRandomIntegerNumber(10,59)
+
+}
+
+const PhotosArray = [];
+
 const generateRandomPicture = () => {
-  return `http://picsum.photos/300/150?r=${Math.random()}`;
+  return ` <img class="event__photo" src="http://picsum.photos/300/150?r=${Math.random()}" alt="Event photo">`;
+}
+
+const generatearrayOfPhotos = () => {
+  for (let i = 0; i<4; i++){
+    PhotosArray.push(generateRandomPicture())
+  }
+  return PhotosArray
 }
 
 const getRandomIcon = () => {
@@ -56,13 +99,22 @@ const getRandomSplicedArray = (arr, maxLength, minLength) => {
   return newArr.slice(0, getRandomIntegerNumber(minLength, maxLength))
 }
 
-const generateEvent = () => {
+const getRanfomTime = () => {
+ return getRandomIntegerNumber(1,12) + `:` + getRandomIntegerNumber(10,59)
+}
+
+export const generateEvent = () => {
   return {
 cityName: generateRandomItem(cityNames),
+activityName: generateRandomItem(activityNames),
 description: getRandomSplicedArray(description, 3, 1).join(` `),
 icon: getRandomIcon(),
-additionalOptions: getRandomSplicedArray(additionalOptions, 2, 0),
-picture: generateRandomPicture(),
+additionalOptions: makeArrayOfOptions(additionalOptions),
+optionName: additionalOptions[getRandomIntegerNumber(0,3)].name,
+pictures: generatearrayOfPhotos(),
 date: getRandomDate(),
+time: getRanfomTime(),
+dateEnd: getRandomDate(),
+price: getRandomIntegerNumber(0, 500),
   }
 }
