@@ -1,1 +1,1 @@
-export const menuArray = [ `Table`, `Stats`];
+export const menuArray = [`Table`, `Stats`];

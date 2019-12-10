@@ -118,8 +118,8 @@ const generateRandomPicture = () => {
 const generatearrayOfPhotos = () => {
   for (let i = 0; i < 4; i++) {
     PhotosArray.push(generateRandomPicture());
-  };
-  return PhotosArray
+  }
+  return PhotosArray;
 };
 
 const getRandomSplicedArray = (arr, maxLength, minLength) => {

@@ -1,1 +1,1 @@
-export const filtersArray = [ `past`, `future`, `all`];
+export const filtersArray = [`past`, `future`, `all`];
