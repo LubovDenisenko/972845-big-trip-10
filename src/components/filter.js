@@ -6,7 +6,7 @@ const createFilterMarkup = (name, value) => {
 };
 
 export const createFilterTemplate = (filters) => {
-  const filterMarkup = filters.map((it, i) => createFilterMarkup(it, i === 0)).join(`\n`);
+  const filterMarkup = filters.map((it) => createFilterMarkup(it)).join(`\n`);
   return (
     `<form class="trip-filters" action="#" method="get">
     ${filterMarkup}

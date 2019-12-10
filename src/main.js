@@ -6,14 +6,16 @@ import {generateArrayOfCards} from './components/card.js';
 import {createAddAndEditFormTemplate} from './components/add-edit-form.js';
 import {menuArray} from './mocks/menu-mock.js';
 import {filtersArray} from './mocks/filter-mock';
-import {generateEvent} from './mocks/card-edit-mock';
-import {createTotalTemplate} from './components/total.js'
+import {generateCardMock} from './mocks/card-edit-mock';
+import {createTotalTemplate} from './components/total.js';
+import {transportTypes} from '../src/constants';
+import {activityTypes} from '../src/constants';
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-const editCard = generateEvent();
+const editCard = generateCardMock();
 
 const siteMainElement = document.querySelector(`.trip-main`);
 const tripMainInfo = siteMainElement.querySelector(`.trip-main__trip-info`);
@@ -27,9 +29,9 @@ render(tripControls, createFilterTemplate(filtersArray), `beforeend`);
 const tripEvents = document.querySelector(`.trip-events`);
 render(tripEvents, createRouteHeaderTemplate(), `afterbegin`);
 
-const newCardsArray = generateArrayOfCards(editCard);
+const mockCards = generateArrayOfCards(editCard);
 const formTemplate = document.querySelector(`.trip-events__list`);
-for (let card of newCardsArray) {
+for (let card of mockCards) {
   render(formTemplate, card, `afterbegin`);
 }
-render(formTemplate, createAddAndEditFormTemplate(editCard), `afterbegin`);
+render(formTemplate, createAddAndEditFormTemplate(editCard, transportTypes, activityTypes), `afterbegin`);
