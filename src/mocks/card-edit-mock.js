@@ -17,48 +17,48 @@ const description = [
 ];
 const activities = [
   {
-  name: `Bus`,
-  icon: `bus`,
+    name: `Bus`,
+    icon: `bus`,
   },
   {
-  name: `Transport`,
-  icon: `transport`,
+    name: `Transport`,
+    icon: `transport`,
   },
   {
-  name: `Check`,
-  icon: `check-in`,
+    name: `Check`,
+    icon: `check-in`,
   },
   {
-  name: `Drive`,
-  icon: `drive`,
+    name: `Drive`,
+    icon: `drive`,
   },
   {
-  name: `Flight`,
-  icon: `flight`,
+    name: `Flight`,
+    icon: `flight`,
   },
   {
-  name: `Restaurant`,
-  icon: `restaurant`,
+    name: `Restaurant`,
+    icon: `restaurant`,
   },
   {
-  name: `Ship`,
-  icon: `ship`,
+    name: `Ship`,
+    icon: `ship`,
   },
   {
-  name: `Sightseeing`,
-  icon: `sightseeing`,
+    name: `Sightseeing`,
+    icon: `sightseeing`,
   },
   {
-  name: `Taxi`,
-  icon: `taxi`,
+    name: `Taxi`,
+    icon: `taxi`,
   },
   {
-  name: `Trip`,
-  icon: `trip`,
+    name: `Trip`,
+    icon: `trip`,
   },
   {
-  name: `Train`,
-  icon: `train`,
+    name: `Train`,
+    icon: `train`,
   },
 ];
 
@@ -71,7 +71,7 @@ const additionalOptions = [
   {
     id: `event-offer-comfort`,
     name: `Switch to comfort class`,
-    price:`+150 €`
+    price: `+150 €`
   },
   {
     id: `event-offer-meal`,
@@ -87,8 +87,8 @@ const additionalOptions = [
 
 
 const getRandomArrayItem = (array) => {
-  let rand = Math.floor(Math.random()*array.length);
-  return array[rand]
+  let rand = Math.floor(Math.random() * array.length);
+  return array[rand];
 };
 
 const getRandomIntegerNumber = (min, max) => {
@@ -96,18 +96,18 @@ const getRandomIntegerNumber = (min, max) => {
 };
 
 const makeArrayOfOptions = (arr) => {
-  const makeRandomArr = (arr) => {
-    const rand = (a, b) => {
+  const makeRandomArr = (array) => {
+    const rand = () => {
       return Math.random() - 0.5;
-    }
-    return arr.sort(rand);
-  }
-  const newArrayOfOptions = makeRandomArr(arr)
-  return newArrayOfOptions.slice(0, getRandomIntegerNumber(0, 3))
+    };
+    return array.sort(rand);
+  };
+  const newArrayOfOptions = makeRandomArr(arr);
+  return newArrayOfOptions.slice(0, getRandomIntegerNumber(0, 3));
 };
 
 const getRandomDate = () => {
-  return getRandomIntegerNumber(1, 31) + '/0' + getRandomIntegerNumber(1, 9) + `/19 ` + getRandomIntegerNumber(1,12) + `:` + getRandomIntegerNumber(10,59)
+  return getRandomIntegerNumber(1, 31) + `/0` + getRandomIntegerNumber(1, 9) + `/19 ` + getRandomIntegerNumber(1, 12) + `:` + getRandomIntegerNumber(10, 59);
 };
 
 const PhotosArray = [];
@@ -116,35 +116,35 @@ const generateRandomPicture = () => {
 };
 
 const generatearrayOfPhotos = () => {
-  for (let i = 0; i<4; i++){
-    PhotosArray.push(generateRandomPicture())
-  }
+  for (let i = 0; i < 4; i++) {
+    PhotosArray.push(generateRandomPicture());
+  };
   return PhotosArray
 };
 
 const getRandomSplicedArray = (arr, maxLength, minLength) => {
   let newArr = arr.slice();
-  newArr.sort(function(){
+  newArr.sort(function () {
     return Math.random() - 0.5;
-  })
-  return newArr.slice(0, getRandomIntegerNumber(minLength, maxLength))
+  });
+  return newArr.slice(0, getRandomIntegerNumber(minLength, maxLength));
 };
 
 const getRanfomTime = () => {
- return getRandomIntegerNumber(1,12) + `:` + getRandomIntegerNumber(10,59)
+  return getRandomIntegerNumber(1, 12) + `:` + getRandomIntegerNumber(10, 59);
 };
 
 export const generateEvent = () => {
   return {
-  activity: getRandomArrayItem(activities),
-  cityName: getRandomArrayItem(cityNames),
-  description: getRandomSplicedArray(description, 3, 1).join(` `),
-  additionalOptions: makeArrayOfOptions(additionalOptions),
-  optionName: additionalOptions[getRandomIntegerNumber(0,3)].name,
-  pictures: generatearrayOfPhotos(),
-  date: getRandomDate(),
-  time: getRanfomTime(),
-  dateEnd: getRandomDate(),
-  price: getRandomIntegerNumber(0, 500),
-  }
+    activity: getRandomArrayItem(activities),
+    cityName: getRandomArrayItem(cityNames),
+    description: getRandomSplicedArray(description, 3, 1).join(` `),
+    additionalOptions: makeArrayOfOptions(additionalOptions),
+    optionName: additionalOptions[getRandomIntegerNumber(0, 3)].name,
+    pictures: generatearrayOfPhotos(),
+    date: getRandomDate(),
+    time: getRanfomTime(),
+    dateEnd: getRandomDate(),
+    price: getRandomIntegerNumber(0, 500),
+  };
 };
