@@ -2,10 +2,6 @@ const cityNames = [
   `Moscow`, `Paris`, `London`, `Tel-Aviv`, `Milan`, `Hamburg`, `New York`
 ];
 
-const activityNames = [
-  `Taxi`, `Bus`, `Train`, `Ship`, `Transport`, `Drive`, `Flight`, `Check`, `Sightseeing`, `Restaurant`
-]
-
 const description = [
   `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
   `Cras aliquet varius magna, non porta ligula feugiat eget.`,
@@ -19,8 +15,51 @@ const description = [
   `Nunc fermentum tortor ac porta dapibus.`,
   `In rutrum ac purus sit amet tempus.`
 ];
-const img = [
-  `bus`, `check-in`, `drive`, `flight`, `restaurant`, `ship`, `sightseeing`, `taxi`, `train`, `transport`, `trip`
+const activities = [
+  {
+  name: `Bus`,
+  icon: `bus`,
+  },
+  {
+  name: `Transport`,
+  icon: `transport`,
+  },
+  {
+  name: `Check`,
+  icon: `check-in`,
+  },
+  {
+  name: `Drive`,
+  icon: `drive`,
+  },
+  {
+  name: `Flight`,
+  icon: `flight`,
+  },
+  {
+  name: `Restaurant`,
+  icon: `restaurant`,
+  },
+  {
+  name: `Ship`,
+  icon: `ship`,
+  },
+  {
+  name: `Sightseeing`,
+  icon: `sightseeing`,
+  },
+  {
+  name: `Taxi`,
+  icon: `taxi`,
+  },
+  {
+  name: `Trip`,
+  icon: `trip`,
+  },
+  {
+  name: `Train`,
+  icon: `train`,
+  },
 ];
 
 const additionalOptions = [
@@ -47,7 +86,7 @@ const additionalOptions = [
 ];
 
 
-const generateRandomItem = (array) => {
+const getRandomArrayItem = (array) => {
   let rand = Math.floor(Math.random()*array.length);
   return array[rand]
 };
@@ -57,39 +96,31 @@ const getRandomIntegerNumber = (min, max) => {
 };
 
 const makeArrayOfOptions = (arr) => {
-
-const makeRandomArr = (arr) => {
-const rand = (a, b) => {
-  return Math.random() - 0.5;
-}
-return arr.sort(rand);
-}
-const newArrayOfOptions = makeRandomArr(arr)
-return newArrayOfOptions.slice(0, getRandomIntegerNumber(0, 3))
-}
-
+  const makeRandomArr = (arr) => {
+    const rand = (a, b) => {
+      return Math.random() - 0.5;
+    }
+    return arr.sort(rand);
+  }
+  const newArrayOfOptions = makeRandomArr(arr)
+  return newArrayOfOptions.slice(0, getRandomIntegerNumber(0, 3))
+};
 
 const getRandomDate = () => {
   return getRandomIntegerNumber(1, 31) + '/0' + getRandomIntegerNumber(1, 9) + `/19 ` + getRandomIntegerNumber(1,12) + `:` + getRandomIntegerNumber(10,59)
-
-}
+};
 
 const PhotosArray = [];
-
 const generateRandomPicture = () => {
   return ` <img class="event__photo" src="http://picsum.photos/300/150?r=${Math.random()}" alt="Event photo">`;
-}
+};
 
 const generatearrayOfPhotos = () => {
   for (let i = 0; i<4; i++){
     PhotosArray.push(generateRandomPicture())
   }
   return PhotosArray
-}
-
-const getRandomIcon = () => {
-  return `img/icons/${generateRandomItem(img)}.png`
-}
+};
 
 const getRandomSplicedArray = (arr, maxLength, minLength) => {
   let newArr = arr.slice();
@@ -97,24 +128,23 @@ const getRandomSplicedArray = (arr, maxLength, minLength) => {
     return Math.random() - 0.5;
   })
   return newArr.slice(0, getRandomIntegerNumber(minLength, maxLength))
-}
+};
 
 const getRanfomTime = () => {
  return getRandomIntegerNumber(1,12) + `:` + getRandomIntegerNumber(10,59)
-}
+};
 
 export const generateEvent = () => {
   return {
-cityName: generateRandomItem(cityNames),
-activityName: generateRandomItem(activityNames),
-description: getRandomSplicedArray(description, 3, 1).join(` `),
-icon: getRandomIcon(),
-additionalOptions: makeArrayOfOptions(additionalOptions),
-optionName: additionalOptions[getRandomIntegerNumber(0,3)].name,
-pictures: generatearrayOfPhotos(),
-date: getRandomDate(),
-time: getRanfomTime(),
-dateEnd: getRandomDate(),
-price: getRandomIntegerNumber(0, 500),
+  activity: getRandomArrayItem(activities),
+  cityName: getRandomArrayItem(cityNames),
+  description: getRandomSplicedArray(description, 3, 1).join(` `),
+  additionalOptions: makeArrayOfOptions(additionalOptions),
+  optionName: additionalOptions[getRandomIntegerNumber(0,3)].name,
+  pictures: generatearrayOfPhotos(),
+  date: getRandomDate(),
+  time: getRanfomTime(),
+  dateEnd: getRandomDate(),
+  price: getRandomIntegerNumber(0, 500),
   }
-}
+};

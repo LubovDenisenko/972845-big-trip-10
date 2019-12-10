@@ -4,9 +4,9 @@ import {createInfoTemplate} from './components/info.js';
 import {createRouteHeaderTemplate} from './components/route-header.js';
 import {generateArrayOfCards} from './components/card.js';
 import {createAddAndEditFormTemplate} from './components/add-edit-form.js';
-import {generateMenu} from '../mocks/menu-mock.js';
-import {generateFilters} from '../mocks/filter-mock';
-import {generateEvent} from '../mocks/card-edit-mock';
+import {generateMenu} from './mocks/menu-mock.js';
+import {generateFilters} from './mocks/filter-mock';
+import {generateEvent} from './mocks/card-edit-mock';
 import {createTotalTemplate} from './components/total.js'
 
 const render = (container, template, place) => {

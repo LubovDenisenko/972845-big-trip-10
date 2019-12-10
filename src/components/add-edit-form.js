@@ -1,16 +1,16 @@
-const createAddEditMarkup = (mock) => {
+const createAddEditMarkup = (data) => {
   return (`<div class="event__offer-selector">
-      <input class="event__offer-checkbox  visually-hidden" id="${mock.id}-1" type="checkbox" name="${mock.id}" >
-      <label class="event__offer-label" for="${mock.id}-1">
-      <span class="event__offer-title">${mock.name}</span>
+      <input class="event__offer-checkbox  visually-hidden" id="${data.id}-1" type="checkbox" name="${data.id}" >
+      <label class="event__offer-label" for="${data.id}-1">
+      <span class="event__offer-title">${data.name}</span>
       &plus;
-      &euro;&nbsp;<span class="event__offer-price">${mock.price}</span>
+      &euro;&nbsp;<span class="event__offer-price">${data.price}</span>
       </label>
   </div>`);
 };
 
-export const createAddAndEditFormTemplate = (mock) => {
-  const addAndEdit = mock.additionalOptions.map((it, i) => createAddEditMarkup(it, i === 0)).join(`\n`);
+export const createAddAndEditFormTemplate = (data) => {
+  const addAndEditFormTemplate = data.additionalOptions.map((it, i) => createAddEditMarkup(it, i === 0)).join(`\n`);
   return (
     `<li class="trip-events__item">
     <form class="event  event--edit" action="#" method="post">
@@ -18,7 +18,7 @@ export const createAddAndEditFormTemplate = (mock) => {
         <div class="event__type-wrapper">
           <label class="event__type  event__type-btn" for="event-type-toggle-1">
             <span class="visually-hidden">Choose event type</span>
-            <img class="event__type-icon" width="17" height="17" src="${mock.icon}" alt="Event type icon">
+            <img class="event__type-icon" width="17" height="17" src="img/icons/${data.activity.icon}.png" alt="Event type icon">
           </label>
           <input class="event__type-toggle  visually-hidden" id="event-type-toggle-1" type="checkbox">
 
@@ -85,9 +85,9 @@ export const createAddAndEditFormTemplate = (mock) => {
 
         <div class="event__field-group  event__field-group--destination">
           <label class="event__label  event__type-output" for="event-destination-1">
-            ${mock.activityName} at
+            ${data.activity.name} at
           </label>
-          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${mock.cityName}" list="destination-list-1">
+          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${data.cityName}" list="destination-list-1">
           <datalist id="destination-list-1">
             <option value="Amsterdam"></option>
             <option value="Geneva"></option>
@@ -99,12 +99,12 @@ export const createAddAndEditFormTemplate = (mock) => {
           <label class="visually-hidden" for="event-start-time-1">
             From
           </label>
-          <input class="event__input  event__input--time" id="event-start-time-1" type="text" name="event-start-time" value="${mock.date}">
+          <input class="event__input  event__input--time" id="event-start-time-1" type="text" name="event-start-time" value="${data.date}">
           &mdash;
           <label class="visually-hidden" for="event-end-time-1">
             To
           </label>
-          <input class="event__input  event__input--time" id="event-end-time-1" type="text" name="event-end-time" value="${mock.dateEnd}">
+          <input class="event__input  event__input--time" id="event-end-time-1" type="text" name="event-end-time" value="${data.dateEnd}">
         </div>
 
         <div class="event__field-group  event__field-group--price">
@@ -112,7 +112,7 @@ export const createAddAndEditFormTemplate = (mock) => {
             <span class="visually-hidden">Price</span>
             &euro;
           </label>
-          <input class="event__input  event__input--price" id="event-price-1" type="text" name="event-price" value="${mock.price}">
+          <input class="event__input  event__input--price" id="event-price-1" type="text" name="event-price" value="${data.price}">
         </div>
 
         <button class="event__save-btn  btn  btn--blue" type="submit">Save</button>
@@ -137,17 +137,17 @@ export const createAddAndEditFormTemplate = (mock) => {
           <h3 class="event__section-title  event__section-title--offers">Offers</h3>
 
           <div class="event__available-offers">
-          ${addAndEdit}
+          ${addAndEditFormTemplate}
           </div>
         </section>
 
         <section class="event__section  event__section--destination">
           <h3 class="event__section-title  event__section-title--destination">Destination</h3>
-          <p class="event__destination-description">${mock.description}</p>
+          <p class="event__destination-description">${data.description}</p>
 
           <div class="event__photos-container">
             <div class="event__photos-tape">
-            ${mock.pictures.join(`\n`)}
+            ${data.pictures.join(`\n`)}
             </div>
           </div>
         </section>
