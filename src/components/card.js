@@ -36,8 +36,9 @@ export const createCardTemplate = (data) => {
           </li>`
   );
 };
-const cardsArray = [];
+
 export const generateArrayOfCards = (data) => {
+  const cardsArray = [];
   for (let i = 0; i < 3; i++) {
     cardsArray.push(createCardTemplate(data));
   }

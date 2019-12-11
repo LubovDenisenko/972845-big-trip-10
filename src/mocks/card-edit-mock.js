@@ -95,22 +95,12 @@ const getRandomIntegerNumber = (min, max) => {
   return min + Math.floor(max * Math.random());
 };
 
-const getOptionsArray = (arr) => {
-  const makeRandomArr = (array) => {
-    return array.sort(() => {
-      return Math.random() - 0.5;
-    });
-  };
-  const newArrayOfOptions = makeRandomArr(arr);
-  return newArrayOfOptions.slice(0, getRandomIntegerNumber(0, 3));
-};
-
 const getRandomDate = () => {
   return getRandomIntegerNumber(1, 31) + `/0` + getRandomIntegerNumber(1, 9) + `/19 ` + getRandomIntegerNumber(1, 12) + `:` + getRandomIntegerNumber(10, 59);
 };
 
 const generateRandomPicture = () => {
-  return ` <img class="event__photo" src="http://picsum.photos/300/150?r=${Math.random()}" alt="Event photo">`;
+  return `<img class="event__photo" src="http://picsum.photos/300/150?r=${Math.random()}" alt="Event photo">`;
 };
 
 const generateArrayOfPhotos = () => {
@@ -121,7 +111,7 @@ const generateArrayOfPhotos = () => {
   return photosArray;
 };
 
-const getRandomSplicedArray = (arr, maxLength, minLength) => {
+const getRandomSlicedArray = (arr, maxLength, minLength) => {
   const newArr = arr.slice();
   newArr.sort(function () {
     return Math.random() - 0.5;
@@ -137,8 +127,8 @@ export const generateCardMock = () => {
   return {
     activity: getRandomArrayItem(activities),
     cityName: getRandomArrayItem(cityNames),
-    description: getRandomSplicedArray(sentences, 3, 1).join(` `),
-    additionalOptions: getOptionsArray(additionalOptions),
+    description: getRandomSlicedArray(sentences, 3, 1).join(` `),
+    additionalOptions: getRandomSlicedArray(additionalOptions, 3, 0),
     optionName: additionalOptions[getRandomIntegerNumber(0, 3)].name,
     pictures: generateArrayOfPhotos(),
     date: getRandomDate(),
