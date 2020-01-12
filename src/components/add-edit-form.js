@@ -1,3 +1,5 @@
+import {createElement} from '../utils.js'
+
 const createAddEditMarkup = (data) => {
   return (`<div class="event__offer-selector">
       <input class="event__offer-checkbox  visually-hidden" id="${data.id}-1" type="checkbox" name="${data.id}" >
@@ -18,10 +20,10 @@ const createInputMarkup = (constant) => {
   );
 };
 
-export const createAddAndEditFormTemplate = (data, constantsTransfer, constantsActivity) => {
-  const addAndEditFormTemplate = data.additionalOptions.map((it) => createAddEditMarkup(it)).join(`\n`);
-  const inputTemplateTransfer = constantsTransfer.map((it) => createInputMarkup(it)).join(`\n`);
-  const inputTemplateActivity = constantsActivity.map((it) => createInputMarkup(it)).join(`\n`);
+const createAddAndEditFormTemplate = (data, constantsTransfer, constantsActivity) => {
+  const addAndEditFormTemplate = data.additionalOptions.map(it => createAddEditMarkup(it)).join(`\n`);
+  const inputTemplateTransfer = constantsTransfer.map(it => createInputMarkup(it)).join(`\n`);
+  const inputTemplateActivity = constantsActivity.map(it => createInputMarkup(it)).join(`\n`);
   return (
     `<li class="trip-events__item">
     <form class="event  event--edit" action="#" method="post">
@@ -119,3 +121,27 @@ export const createAddAndEditFormTemplate = (data, constantsTransfer, constantsA
     </li> `
   );
 };
+
+export default class SiteAddEditForm {
+  constructor(data, constantsTransfer, constantsActivity) {
+    this._data = data;
+    this._element = null;
+    this._constantsTransfer = constantsTransfer;
+    this._constantsActivity = constantsActivity;
+  }
+
+  getTemplate() {
+    return createAddAndEditFormTemplate(this._data, this._constantsTransfer, this._constantsActivity);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null
+  }
+}

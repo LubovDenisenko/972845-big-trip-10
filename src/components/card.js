@@ -1,4 +1,6 @@
-export const createCardTemplate = (data) => {
+import {createElement} from '../utils.js'
+
+const createCardTemplate = (data) => {
   return (
     ` <li class="trip-events__item">
                   <div class="event">
@@ -37,10 +39,24 @@ export const createCardTemplate = (data) => {
   );
 };
 
-export const generateArrayOfCards = (data) => {
-  const cardsArray = [];
-  for (let i = 0; i < 3; i++) {
-    cardsArray.push(createCardTemplate(data));
+export default class SiteCard {
+  constructor(data) {
+    this._data = data;
+    this._element = null;
   }
-  return cardsArray;
+
+  getTemplate() {
+    return createCardTemplate(this._data);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null
+  }
 };
