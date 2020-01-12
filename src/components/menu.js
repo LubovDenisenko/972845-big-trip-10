@@ -30,6 +30,6 @@ export default class SiteMenu {
   }
 
   removeElement() {
-    this._element = null
+    this._element = null;
   }
-};
+}
