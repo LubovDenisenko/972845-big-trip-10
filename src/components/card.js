@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils.js';
 
 const createCardTemplate = (data) => {
   return (
@@ -57,6 +57,6 @@ export default class SiteCard {
   }
 
   removeElement() {
-    this._element = null
+    this._element = null;
   }
-};
+}

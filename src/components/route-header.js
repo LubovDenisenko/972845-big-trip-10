@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils.js';
 const createRouteHeaderTemplate =
     `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
     <span class="trip-sort__item  trip-sort__item--day"></span>
@@ -50,6 +50,6 @@ export default class SiteRoutHeader {
   }
 
   removeElement() {
-    this._element = null
+    this._element = null;
   }
 }

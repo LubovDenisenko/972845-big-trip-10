@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils.js';
 const createTotalTemplate = (data) => {
   return (`<p class="trip-info__cost">
   Total: &euro;&nbsp;<span class="trip-info__cost-value">${data.price * 4}</span>
@@ -23,6 +23,6 @@ export default class SiteTotal {
   }
 
   removeElement() {
-    this._element = null
+    this._element = null;
   }
 }

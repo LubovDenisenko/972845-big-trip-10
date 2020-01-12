@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils.js';
 const createMenuMarkup = (item) => {
   return (`<a class="trip-tabs__btn" href="#">${item}</a>`);
 };
@@ -32,4 +32,4 @@ export default class SiteMenu {
   removeElement() {
     this._element = null
   }
-}
+};

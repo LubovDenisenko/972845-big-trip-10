@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils.js';
 
 const createAddEditMarkup = (data) => {
   return (`<div class="event__offer-selector">
@@ -21,9 +21,9 @@ const createInputMarkup = (constant) => {
 };
 
 const createAddAndEditFormTemplate = (data, constantsTransfer, constantsActivity) => {
-  const addAndEditFormTemplate = data.additionalOptions.map(it => createAddEditMarkup(it)).join(`\n`);
-  const inputTemplateTransfer = constantsTransfer.map(it => createInputMarkup(it)).join(`\n`);
-  const inputTemplateActivity = constantsActivity.map(it => createInputMarkup(it)).join(`\n`);
+  const addAndEditFormTemplate = data.additionalOptions.map((it) => createAddEditMarkup(it)).join(`\n`);
+  const inputTemplateTransfer = constantsTransfer.map((it) => createInputMarkup(it)).join(`\n`);
+  const inputTemplateActivity = constantsActivity.map((it) => createInputMarkup(it)).join(`\n`);
   return (
     `<li class="trip-events__item">
     <form class="event  event--edit" action="#" method="post">
@@ -142,6 +142,6 @@ export default class SiteAddEditForm {
   }
 
   removeElement() {
-    this._element = null
+    this._element = null;
   }
 }

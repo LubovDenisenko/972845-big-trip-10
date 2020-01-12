@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils.js';
 const createInfoTemplate = () => {
   return (
     `<div class="trip-info__main">
@@ -26,6 +26,6 @@ export default class SiteInfo {
   }
 
   removeElement() {
-    this._element = null
+    this._element = null;
   }
 }

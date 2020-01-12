@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js'
+import {createElement} from '../utils.js';
 
 const createFilterMarkup = (name, value) => {
   return (`<div class="trip-filters__filter">
@@ -35,6 +35,6 @@ export default class SiteFilter {
   }
 
   removeElement() {
-    this._element = null
+    this._element = null;
   }
 }
